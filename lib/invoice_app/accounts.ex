@@ -6,7 +6,9 @@ defmodule InvoiceApp.Accounts do
   import Ecto.Query, warn: false
   alias InvoiceApp.Repo
 
-  alias InvoiceApp.Accounts.{User, UserToken, UserNotifier}
+  alias InvoiceApp.Accounts.User
+  alias InvoiceApp.Accounts.UserNotifier
+  alias InvoiceApp.Accounts.UserToken
 
   ## Database getters
 

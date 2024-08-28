@@ -8,9 +8,8 @@ defmodule InvoiceAppWeb.UserLoginLiveTest do
     test "renders log in page", %{conn: conn} do
       {:ok, _lv, html} = live(conn, ~p"/users/log_in")
 
-      assert html =~ "Log in"
-      assert html =~ "Register"
-      assert html =~ "Forgot your password?"
+      assert html =~ "Sign in to Invoice"
+      assert html =~ "Forgot password?"
     end
 
     test "redirects if already logged in", %{conn: conn} do
@@ -26,7 +25,7 @@ defmodule InvoiceAppWeb.UserLoginLiveTest do
 
   describe "user login" do
     test "redirects if user login with valid credentials", %{conn: conn} do
-      password = "123456789abcd"
+      password = "!234Abcd"
       user = user_fixture(%{password: password})
 
       {:ok, lv, _html} = live(conn, ~p"/users/log_in")
@@ -46,7 +45,7 @@ defmodule InvoiceAppWeb.UserLoginLiveTest do
 
       form =
         form(lv, "#login_form",
-          user: %{email: "test@email.com", password: "123456", remember_me: true}
+          user: %{email: "test@email.com", password: "!234Abcd", remember_me: true}
         )
 
       conn = submit_form(form, conn)
@@ -61,23 +60,24 @@ defmodule InvoiceAppWeb.UserLoginLiveTest do
     test "redirects to registration page when the Register button is clicked", %{conn: conn} do
       {:ok, lv, _html} = live(conn, ~p"/users/log_in")
 
-      {:ok, _login_live, login_html} =
+      {:ok, _register_live, register_html} =
         lv
-        |> element(~s|main a:fl-contains("Sign up")|)
+        |> element("a", "Sign Up")
         |> render_click()
         |> follow_redirect(conn, ~p"/users/register")
 
-      assert login_html =~ "Register"
+      assert register_html =~ "Create an account"
+      assert register_html =~ "Begin creating invoices for free!"
+      assert register_html =~ "Sign Up"
+      assert register_html =~ "Already have an account?"
     end
 
-    test "redirects to forgot password page when the Forgot Password button is clicked", %{
-      conn: conn
-    } do
+    test "redirects to forgot password page when the Forgot Password button is clicked", %{conn: conn} do
       {:ok, lv, _html} = live(conn, ~p"/users/log_in")
 
       {:ok, conn} =
         lv
-        |> element(~s|main a:fl-contains("Forgot your password?")|)
+        |> element("a", "Forgot password?")
         |> render_click()
         |> follow_redirect(conn, ~p"/users/reset_password")
 

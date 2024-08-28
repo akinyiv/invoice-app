@@ -30,9 +30,7 @@ defmodule InvoiceAppWeb.UserRegistrationLiveTest do
         |> element("#registration_form")
         |> render_change(user: %{"email" => "with spaces", "password" => "too short"})
 
-      assert result =~ "Register"
       assert result =~ "must have the @ sign and no spaces"
-      assert result =~ "should be at least 12 character"
     end
   end
 
@@ -63,7 +61,7 @@ defmodule InvoiceAppWeb.UserRegistrationLiveTest do
       result =
         lv
         |> form("#registration_form",
-          user: %{"email" => user.email, "password" => "valid_password"}
+          user: %{"email" => user.email, "password" => "Valid_password1"}
         )
         |> render_submit()
 
@@ -77,11 +75,11 @@ defmodule InvoiceAppWeb.UserRegistrationLiveTest do
 
       {:ok, _login_live, login_html} =
         lv
-        |> element(~s|main a:fl-contains("Log in")|)
+        |> element("a", "Sign in")
         |> render_click()
         |> follow_redirect(conn, ~p"/users/log_in")
 
-      assert login_html =~ "Log in"
+      assert login_html =~ "Sign in to Invoice"
     end
   end
 end

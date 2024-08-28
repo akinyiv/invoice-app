@@ -1,10 +1,10 @@
 defmodule InvoiceAppWeb.UserAuthTest do
   use InvoiceAppWeb.ConnCase, async: true
 
-  alias Phoenix.LiveView
   alias InvoiceApp.Accounts
   alias InvoiceAppWeb.UserAuth
   import InvoiceApp.AccountsFixtures
+  alias Phoenix.LiveView
 
   @remember_me_cookie "_invoice_app_web_user_remember_me"
 
