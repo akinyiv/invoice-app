@@ -1,5 +1,5 @@
 defmodule InvoiceAppWeb.UserAuth do
-    @moduledoc false
+  @moduledoc false
   use InvoiceAppWeb, :verified_routes
 
   import Plug.Conn

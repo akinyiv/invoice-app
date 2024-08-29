@@ -62,7 +62,7 @@ defmodule InvoiceAppWeb.UserLoginLiveTest do
 
       {:ok, _register_live, register_html} =
         lv
-        |> element("a", "Sign Up")
+        |> element(~s|main a:fl-contains("Sign up")|)
         |> render_click()
         |> follow_redirect(conn, ~p"/users/register")
 
@@ -72,7 +72,9 @@ defmodule InvoiceAppWeb.UserLoginLiveTest do
       assert register_html =~ "Already have an account?"
     end
 
-    test "redirects to forgot password page when the Forgot Password button is clicked", %{conn: conn} do
+    test "redirects to forgot password page when the Forgot Password button is clicked", %{
+      conn: conn
+    } do
       {:ok, lv, _html} = live(conn, ~p"/users/log_in")
 
       {:ok, conn} =

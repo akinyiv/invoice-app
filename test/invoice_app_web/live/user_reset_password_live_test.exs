@@ -95,7 +95,7 @@ defmodule InvoiceAppWeb.UserResetPasswordLiveTest do
         |> render_click()
         |> follow_redirect(conn, ~p"/users/log_in")
 
-      assert conn.resp_body =~ "Log in"
+      assert conn.resp_body =~ "Continue"
     end
 
     test "redirects to registration page when the Register button is clicked", %{
@@ -110,7 +110,7 @@ defmodule InvoiceAppWeb.UserResetPasswordLiveTest do
         |> render_click()
         |> follow_redirect(conn, ~p"/users/register")
 
-      assert conn.resp_body =~ "Register"
+      assert conn.resp_body =~ "Sign Up"
     end
   end
 end

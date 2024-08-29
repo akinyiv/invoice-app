@@ -1,5 +1,5 @@
 defmodule InvoiceApp.Accounts.UserNotifier do
-    @moduledoc false
+  @moduledoc false
   import Swoosh.Email
 
   alias InvoiceApp.Mailer

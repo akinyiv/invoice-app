@@ -1,5 +1,5 @@
 defmodule InvoiceApp.Accounts.User do
-    @moduledoc false
+  @moduledoc false
   use Ecto.Schema
   import Ecto.Changeset
 

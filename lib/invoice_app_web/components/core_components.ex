@@ -15,7 +15,7 @@ defmodule InvoiceAppWeb.CoreComponents do
   Icons are provided by [heroicons](https://heroicons.com). See `icon/1` for usage.
   """
   use Phoenix.Component
-  
+
   alias Phoenix.HTML.Form
   alias Phoenix.LiveView.JS
   import InvoiceAppWeb.Gettext
@@ -308,6 +308,7 @@ defmodule InvoiceAppWeb.CoreComponents do
       assign_new(assigns, :checked, fn ->
         Form.normalize_value("checkbox", assigns[:value])
       end)
+
     ~H"""
     <div phx-feedback-for={@name}>
       <label class="flex items-center gap-4 text-sm leading-6 text-zinc-600">
