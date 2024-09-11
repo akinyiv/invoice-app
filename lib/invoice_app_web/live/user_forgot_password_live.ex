@@ -1,4 +1,5 @@
 defmodule InvoiceAppWeb.UserForgotPasswordLive do
+  @moduledoc false
   use InvoiceAppWeb, :live_view
 
   alias InvoiceApp.Accounts

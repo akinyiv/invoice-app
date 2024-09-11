@@ -2,8 +2,8 @@ defmodule InvoiceAppWeb.UserAuth do
   @moduledoc false
   use InvoiceAppWeb, :verified_routes
 
-  import Plug.Conn
   import Phoenix.Controller
+  import Plug.Conn
 
   alias InvoiceApp.Accounts
 

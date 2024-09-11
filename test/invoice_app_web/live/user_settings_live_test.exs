@@ -1,9 +1,10 @@
 defmodule InvoiceAppWeb.UserSettingsLiveTest do
   use InvoiceAppWeb.ConnCase, async: true
 
-  alias InvoiceApp.Accounts
-  import Phoenix.LiveViewTest
   import InvoiceApp.AccountsFixtures
+  import Phoenix.LiveViewTest
+
+  alias InvoiceApp.Accounts
 
   describe "Settings page" do
     test "renders settings page", %{conn: conn} do

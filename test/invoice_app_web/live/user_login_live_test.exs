@@ -1,8 +1,8 @@
 defmodule InvoiceAppWeb.UserLoginLiveTest do
   use InvoiceAppWeb.ConnCase, async: true
 
-  import Phoenix.LiveViewTest
   import InvoiceApp.AccountsFixtures
+  import Phoenix.LiveViewTest
 
   describe "Log in page" do
     test "renders log in page", %{conn: conn} do
@@ -44,9 +44,7 @@ defmodule InvoiceAppWeb.UserLoginLiveTest do
       {:ok, lv, _html} = live(conn, ~p"/users/log_in")
 
       form =
-        form(lv, "#login_form",
-          user: %{email: "test@email.com", password: "!234Abcd", remember_me: true}
-        )
+        form(lv, "#login_form", user: %{email: "test@email.com", password: "!234Abcd", remember_me: true})
 
       conn = submit_form(form, conn)
 

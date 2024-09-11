@@ -1,8 +1,8 @@
 defmodule InvoiceAppWeb.UserResetPasswordLiveTest do
   use InvoiceAppWeb.ConnCase, async: true
 
-  import Phoenix.LiveViewTest
   import InvoiceApp.AccountsFixtures
+  import Phoenix.LiveViewTest
 
   alias InvoiceApp.Accounts
 
@@ -39,9 +39,7 @@ defmodule InvoiceAppWeb.UserResetPasswordLiveTest do
       result =
         lv
         |> element("#reset_password_form")
-        |> render_change(
-          user: %{"password" => "secret12", "password_confirmation" => "Secret123456!"}
-        )
+        |> render_change(user: %{"password" => "secret12", "password_confirmation" => "Secret123456!"})
 
       assert result =~ "does not match password"
     end

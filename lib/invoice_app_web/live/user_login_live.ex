@@ -1,4 +1,5 @@
 defmodule InvoiceAppWeb.UserLoginLive do
+  @moduledoc false
   use InvoiceAppWeb, :live_view
 
   def render(assigns) do

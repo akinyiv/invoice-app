@@ -1,4 +1,5 @@
 defmodule InvoiceAppWeb.UserConfirmationInstructionsLive do
+  @moduledoc false
   use InvoiceAppWeb, :live_view
 
   alias InvoiceApp.Accounts

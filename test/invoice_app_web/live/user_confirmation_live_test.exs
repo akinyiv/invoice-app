@@ -1,8 +1,8 @@
 defmodule InvoiceAppWeb.UserConfirmationLiveTest do
   use InvoiceAppWeb.ConnCase, async: true
 
-  import Phoenix.LiveViewTest
   import InvoiceApp.AccountsFixtures
+  import Phoenix.LiveViewTest
 
   alias InvoiceApp.Accounts
   alias InvoiceApp.Repo
@@ -56,8 +56,7 @@ defmodule InvoiceAppWeb.UserConfirmationLiveTest do
 
       # when logged in
       conn =
-        build_conn()
-        |> log_in_user(user)
+        log_in_user(build_conn(), user)
 
       {:ok, lv, _html} = live(conn, ~p"/users/confirm/#{token}")
 

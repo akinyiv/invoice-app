@@ -4,11 +4,11 @@ defmodule InvoiceApp.Accounts do
   """
 
   import Ecto.Query, warn: false
-  alias InvoiceApp.Repo
 
   alias InvoiceApp.Accounts.User
   alias InvoiceApp.Accounts.UserNotifier
   alias InvoiceApp.Accounts.UserToken
+  alias InvoiceApp.Repo
 
   ## Database getters
 
@@ -40,8 +40,7 @@ defmodule InvoiceApp.Accounts do
       nil
 
   """
-  def get_user_by_email_and_password(email, password)
-      when is_binary(email) and is_binary(password) do
+  def get_user_by_email_and_password(email, password) when is_binary(email) and is_binary(password) do
     user = Repo.get_by(User, email: email)
     if User.valid_password?(user, password), do: user
   end

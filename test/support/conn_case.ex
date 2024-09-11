@@ -20,14 +20,14 @@ defmodule InvoiceAppWeb.ConnCase do
   using do
     quote do
       # The default endpoint for testing
-      @endpoint InvoiceAppWeb.Endpoint
-
       use InvoiceAppWeb, :verified_routes
 
       # Import conveniences for testing with connections
-      import Plug.Conn
-      import Phoenix.ConnTest
       import InvoiceAppWeb.ConnCase
+      import Phoenix.ConnTest
+      import Plug.Conn
+
+      @endpoint InvoiceAppWeb.Endpoint
     end
   end
 

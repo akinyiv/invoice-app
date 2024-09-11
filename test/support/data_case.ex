@@ -20,12 +20,12 @@ defmodule InvoiceApp.DataCase do
 
   using do
     quote do
-      alias InvoiceApp.Repo
-
       import Ecto
       import Ecto.Changeset
       import Ecto.Query
       import InvoiceApp.DataCase
+
+      alias InvoiceApp.Repo
     end
   end
 
