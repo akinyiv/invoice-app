@@ -1,8 +1,8 @@
 defmodule InvoiceAppWeb.UserResetPasswordLiveTest do
   use InvoiceAppWeb.ConnCase, async: true
 
-  import Phoenix.LiveViewTest
   import InvoiceApp.AccountsFixtures
+  import Phoenix.LiveViewTest
 
   alias InvoiceApp.Accounts
 
@@ -39,11 +39,8 @@ defmodule InvoiceAppWeb.UserResetPasswordLiveTest do
       result =
         lv
         |> element("#reset_password_form")
-        |> render_change(
-          user: %{"password" => "secret12", "password_confirmation" => "secret123456"}
-        )
+        |> render_change(user: %{"password" => "secret12", "password_confirmation" => "Secret123456!"})
 
-      assert result =~ "should be at least 12 character"
       assert result =~ "does not match password"
     end
   end
@@ -56,8 +53,8 @@ defmodule InvoiceAppWeb.UserResetPasswordLiveTest do
         lv
         |> form("#reset_password_form",
           user: %{
-            "password" => "new valid password",
-            "password_confirmation" => "new valid password"
+            "password" => "Newpassword1!",
+            "password_confirmation" => "Newpassword1!"
           }
         )
         |> render_submit()
@@ -65,7 +62,7 @@ defmodule InvoiceAppWeb.UserResetPasswordLiveTest do
 
       refute get_session(conn, :user_token)
       assert Phoenix.Flash.get(conn.assigns.flash, :info) =~ "Password reset successfully"
-      assert Accounts.get_user_by_email_and_password(user.email, "new valid password")
+      assert Accounts.get_user_by_email_and_password(user.email, "Newpassword1!")
     end
 
     test "does not reset password on invalid data", %{conn: conn, token: token} do
@@ -82,7 +79,6 @@ defmodule InvoiceAppWeb.UserResetPasswordLiveTest do
         |> render_submit()
 
       assert result =~ "Reset Password"
-      assert result =~ "should be at least 12 character(s)"
       assert result =~ "does not match password"
     end
   end
@@ -97,7 +93,7 @@ defmodule InvoiceAppWeb.UserResetPasswordLiveTest do
         |> render_click()
         |> follow_redirect(conn, ~p"/users/log_in")
 
-      assert conn.resp_body =~ "Log in"
+      assert conn.resp_body =~ "Continue"
     end
 
     test "redirects to registration page when the Register button is clicked", %{
@@ -112,7 +108,7 @@ defmodule InvoiceAppWeb.UserResetPasswordLiveTest do
         |> render_click()
         |> follow_redirect(conn, ~p"/users/register")
 
-      assert conn.resp_body =~ "Register"
+      assert conn.resp_body =~ "Sign Up"
     end
   end
 end

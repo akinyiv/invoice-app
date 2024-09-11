@@ -1,0 +1,11 @@
+{application,mjml,
+             [{compile_env,[{rustler_precompiled,[force_build,mjml],error},
+                            {rustler_precompiled,[force_build_all],error}]},
+              {optional_applications,[rustler]},
+              {applications,[kernel,stdlib,elixir,logger,rustler_precompiled,
+                             rustler]},
+              {description,"mjml"},
+              {modules,['Elixir.Mjml','Elixir.Mjml.Native',
+                        'Elixir.Mjml.RenderOptions']},
+              {registered,[]},
+              {vsn,"4.0.0"}]}.

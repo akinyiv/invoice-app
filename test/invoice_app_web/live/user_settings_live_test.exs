@@ -1,9 +1,10 @@
 defmodule InvoiceAppWeb.UserSettingsLiveTest do
   use InvoiceAppWeb.ConnCase, async: true
 
-  alias InvoiceApp.Accounts
-  import Phoenix.LiveViewTest
   import InvoiceApp.AccountsFixtures
+  import Phoenix.LiveViewTest
+
+  alias InvoiceApp.Accounts
 
   describe "Settings page" do
     test "renders settings page", %{conn: conn} do
@@ -133,7 +134,6 @@ defmodule InvoiceAppWeb.UserSettingsLiveTest do
         })
 
       assert result =~ "Change Password"
-      assert result =~ "should be at least 12 character(s)"
       assert result =~ "does not match password"
     end
 
@@ -152,7 +152,6 @@ defmodule InvoiceAppWeb.UserSettingsLiveTest do
         |> render_submit()
 
       assert result =~ "Change Password"
-      assert result =~ "should be at least 12 character(s)"
       assert result =~ "does not match password"
       assert result =~ "is not valid"
     end

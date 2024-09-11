@@ -1,8 +1,8 @@
 defmodule InvoiceAppWeb.UserForgotPasswordLiveTest do
   use InvoiceAppWeb.ConnCase, async: true
 
-  import Phoenix.LiveViewTest
   import InvoiceApp.AccountsFixtures
+  import Phoenix.LiveViewTest
 
   alias InvoiceApp.Accounts
   alias InvoiceApp.Repo
